@@ -4,6 +4,8 @@ package songcontestrater;
 
 import "google/protobuf/timestamp.proto";
 
+option go_package = "github.com/hyperremix/song-contest-rater-proto";
+
 message GetActRequest { string id = 1; }
 
 message CreateActRequest {

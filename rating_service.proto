@@ -5,6 +5,8 @@ package songcontestrater;
 import "google/protobuf/empty.proto";
 import "rating.proto";
 
+option go_package = "github.com/hyperremix/song-contest-rater-proto";
+
 service RatingService {
   rpc ListRatings(google.protobuf.Empty) returns (stream ListRatingsResponse) {}
   rpc GetRating(GetRatingRequest) returns (RatingResponse) {}
