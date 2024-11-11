@@ -32,7 +32,7 @@ message UserResponse {
   string firstname = 4;
   string lastname = 5;
   string image_url = 6;
-  repeated Rating ratings = 7;
+  repeated RatingResponse ratings = 7;
   google.protobuf.Timestamp created_at = 8;
   google.protobuf.Timestamp updated_at = 9;
 }

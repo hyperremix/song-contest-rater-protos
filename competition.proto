@@ -34,8 +34,8 @@ message CompetitionResponse {
   string country = 4;
   google.protobuf.Timestamp start_time = 5;
   string image_url = 6;
-  repeated Act acts = 7;
-  repeated Rating ratings = 8;
+  repeated ActResponse acts = 7;
+  repeated RatingResponse ratings = 8;
   google.protobuf.Timestamp created_at = 9;
   google.protobuf.Timestamp updated_at = 10;
 }
