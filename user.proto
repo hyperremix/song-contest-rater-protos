@@ -5,7 +5,28 @@ package songcontestrater;
 import "google/protobuf/timestamp.proto";
 import "rating.proto";
 
-message User {
+message GetUserRequest { string id = 1; }
+
+message CreateUserRequest {
+  string email = 1;
+  string password = 2;
+  string firstname = 3;
+  string lastname = 4;
+  string image_url = 5;
+}
+
+message UpdateUserRequest {
+  string id = 1;
+  string email = 2;
+  string password = 3;
+  string firstname = 4;
+  string lastname = 5;
+  string image_url = 6;
+}
+
+message DeleteUserRequest { string id = 1; }
+
+message UserResponse {
   string id = 1;
   string email = 3;
   string firstname = 4;
@@ -15,3 +36,5 @@ message User {
   google.protobuf.Timestamp created_at = 8;
   google.protobuf.Timestamp updated_at = 9;
 }
+
+message ListUsersResponse { repeated UserResponse users = 1; }

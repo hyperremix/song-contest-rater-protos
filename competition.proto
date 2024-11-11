@@ -6,7 +6,28 @@ import "act.proto";
 import "google/protobuf/timestamp.proto";
 import "rating.proto";
 
-message Competition {
+message GetCompetitionRequest { string id = 1; }
+
+message CreateCompetitionRequest {
+  string description = 1;
+  string city = 2;
+  string country = 3;
+  google.protobuf.Timestamp start_time = 4;
+  string image_url = 5;
+}
+
+message UpdateCompetitionRequest {
+  string id = 1;
+  string description = 2;
+  string city = 3;
+  string country = 4;
+  google.protobuf.Timestamp start_time = 5;
+  string image_url = 6;
+}
+
+message DeleteCompetitionRequest { string id = 1; }
+
+message CompetitionResponse {
   string id = 1;
   string description = 2;
   string city = 3;
@@ -17,4 +38,8 @@ message Competition {
   repeated Rating ratings = 8;
   google.protobuf.Timestamp created_at = 9;
   google.protobuf.Timestamp updated_at = 10;
+}
+
+message ListCompetitionsResponse {
+  repeated CompetitionResponse competitions = 1;
 }

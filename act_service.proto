@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package songcontestrater;
+
+import "act.proto";
+import "google/protobuf/empty.proto";
+
+service ActService {
+  rpc ListActs(google.protobuf.Empty) returns (stream ListActsResponse) {}
+  rpc GetAct(GetActRequest) returns (ActResponse) {}
+  rpc CreateAct(CreateActRequest) returns (ActResponse) {}
+  rpc UpdateAct(UpdateActRequest) returns (ActResponse) {}
+  rpc DeleteAct(DeleteActRequest) returns (ActResponse) {}
+}

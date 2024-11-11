@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package songcontestrater;
+
+import "competition.proto";
+import "google/protobuf/empty.proto";
+
+service CompetitionService {
+  rpc ListCompetitions(google.protobuf.Empty)
+      returns (stream ListCompetitionsResponse) {}
+  rpc GetCompetition(GetCompetitionRequest) returns (CompetitionResponse) {}
+  rpc CreateCompetition(CreateCompetitionRequest)
+      returns (CompetitionResponse) {}
+  rpc UpdateCompetition(UpdateCompetitionRequest)
+      returns (CompetitionResponse) {}
+  rpc DeleteCompetition(DeleteCompetitionRequest)
+      returns (CompetitionResponse) {}
+}

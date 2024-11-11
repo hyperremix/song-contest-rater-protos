@@ -4,7 +4,34 @@ package songcontestrater;
 
 import "google/protobuf/timestamp.proto";
 
-message Rating {
+message GetRatingRequest { string id = 1; }
+
+message CreateRatingRequest {
+  string user_id = 1;
+  string competition_id = 2;
+  string act_id = 3;
+  int32 song = 4;
+  int32 singing = 5;
+  int32 show = 6;
+  int32 looks = 7;
+  int32 clothes = 8;
+}
+
+message UpdateRatingRequest {
+  string id = 1;
+  string user_id = 2;
+  string competition_id = 3;
+  string act_id = 4;
+  int32 song = 5;
+  int32 singing = 6;
+  int32 show = 7;
+  int32 looks = 8;
+  int32 clothes = 9;
+}
+
+message DeleteRatingRequest { string id = 1; }
+
+message RatingResponse {
   string id = 1;
   string user_id = 2;
   string competition_id = 3;
@@ -17,3 +44,5 @@ message Rating {
   google.protobuf.Timestamp created_at = 10;
   google.protobuf.Timestamp updated_at = 11;
 }
+
+message ListRatingsResponse { repeated RatingResponse ratings = 1; }

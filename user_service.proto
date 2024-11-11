@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package songcontestrater;
+
+import "google/protobuf/empty.proto";
+import "user.proto";
+
+service UserService {
+  rpc ListUsers(google.protobuf.Empty) returns (stream ListUsersResponse) {}
+  rpc GetUser(GetUserRequest) returns (UserResponse) {}
+  rpc CreateUser(CreateUserRequest) returns (UserResponse) {}
+  rpc UpdateUser(UpdateUserRequest) returns (UserResponse) {}
+  rpc DeleteUser(DeleteUserRequest) returns (UserResponse) {}
+}
