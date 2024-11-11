@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package songcontestrater;
+
+import "google/protobuf/timestamp.proto";
+
+message Rating {
+  string id = 1;
+  string user_id = 2;
+  string competition_id = 3;
+  string act_id = 4;
+  int32 song = 5;
+  int32 singing = 6;
+  int32 show = 7;
+  int32 looks = 8;
+  int32 clothes = 9;
+  google.protobuf.Timestamp created_at = 10;
+  google.protobuf.Timestamp updated_at = 11;
+}

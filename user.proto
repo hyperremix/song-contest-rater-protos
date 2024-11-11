@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package songcontestrater;
+
+import "google/protobuf/timestamp.proto";
+import "rating.proto";
+
+message User {
+  string id = 1;
+  string email = 3;
+  string firstname = 4;
+  string lastname = 5;
+  string image_url = 6;
+  repeated Rating ratings = 7;
+  google.protobuf.Timestamp created_at = 8;
+  google.protobuf.Timestamp updated_at = 9;
+}

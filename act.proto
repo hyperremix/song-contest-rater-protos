@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package songcontestrater;
+
+import "google/protobuf/timestamp.proto";
+
+message Act {
+  string id = 1;
+  string artist_name = 2;
+  string song_name = 3;
+  string image_url = 4;
+  google.protobuf.Timestamp created_at = 5;
+  google.protobuf.Timestamp updated_at = 6;
+}

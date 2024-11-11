@@ -1,0 +1,21 @@
+{
+  "name": "song-contest-rater-proto",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Fredrik Pettersson <fredrik.pettersson.89@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "lint": "protolint lint .",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "husky": "^9.1.6",
+    "lint-staged": "^15.2.10",
+    "protolint": "^0.50.5"
+  },
+  "lint-staged": {
+    "*.proto": [
+      "protolint lint ."
+    ]
+  }
+}
