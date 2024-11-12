@@ -7,7 +7,7 @@ import "user.proto";
 
 option go_package = "github.com/hyperremix/song-contest-rater-proto";
 
-service UserService {
+service User {
   rpc ListUsers(google.protobuf.Empty) returns (stream ListUsersResponse) {}
   rpc GetUser(GetUserRequest) returns (UserResponse) {}
   rpc CreateUser(CreateUserRequest) returns (UserResponse) {}
