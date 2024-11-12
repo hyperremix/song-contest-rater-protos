@@ -8,7 +8,9 @@ import "google/protobuf/empty.proto";
 option go_package = "protos/songcontestrater";
 
 service Act {
-  rpc ListActs(google.protobuf.Empty) returns (stream ListActsResponse) {}
+  rpc ListActs(google.protobuf.Empty) returns (ListActsResponse) {}
+  rpc ListCompetitionActs(ListCompetitionActsRequest)
+      returns (ListActsResponse) {}
   rpc GetAct(GetActRequest) returns (ActResponse) {}
   rpc CreateAct(CreateActRequest) returns (ActResponse) {}
   rpc UpdateAct(UpdateActRequest) returns (ActResponse) {}

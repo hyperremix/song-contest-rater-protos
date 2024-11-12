@@ -8,6 +8,12 @@ option go_package = "protos/songcontestrater";
 
 message GetRatingRequest { string id = 1; }
 
+message GetRatingByUserRequest { string user_id = 1; }
+
+message GetRatingByCompetitionRequest { string competition_id = 1; }
+
+message GetRatingByActRequest { string act_id = 1; }
+
 message CreateRatingRequest {
   string user_id = 1;
   string competition_id = 2;

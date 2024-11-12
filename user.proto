@@ -7,6 +7,8 @@ import "rating.proto";
 
 option go_package = "protos/songcontestrater";
 
+message ListCompetitionUsersRequest { string competition_id = 1; }
+
 message GetUserRequest { string id = 1; }
 
 message CreateUserRequest {
@@ -34,9 +36,8 @@ message UserResponse {
   string firstname = 4;
   string lastname = 5;
   string image_url = 6;
-  repeated RatingResponse ratings = 7;
-  google.protobuf.Timestamp created_at = 8;
-  google.protobuf.Timestamp updated_at = 9;
+  google.protobuf.Timestamp created_at = 7;
+  google.protobuf.Timestamp updated_at = 8;
 }
 
 message ListUsersResponse { repeated UserResponse users = 1; }

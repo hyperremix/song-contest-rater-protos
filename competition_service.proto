@@ -9,7 +9,7 @@ option go_package = "protos/songcontestrater";
 
 service Competition {
   rpc ListCompetitions(google.protobuf.Empty)
-      returns (stream ListCompetitionsResponse) {}
+      returns (ListCompetitionsResponse) {}
   rpc GetCompetition(GetCompetitionRequest) returns (CompetitionResponse) {}
   rpc CreateCompetition(CreateCompetitionRequest)
       returns (CompetitionResponse) {}

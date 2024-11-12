@@ -8,7 +8,9 @@ import "user.proto";
 option go_package = "protos/songcontestrater";
 
 service User {
-  rpc ListUsers(google.protobuf.Empty) returns (stream ListUsersResponse) {}
+  rpc ListUsers(google.protobuf.Empty) returns (ListUsersResponse) {}
+  rpc ListCompetitionUsers(ListCompetitionUsersRequest)
+      returns (ListUsersResponse) {}
   rpc GetUser(GetUserRequest) returns (UserResponse) {}
   rpc CreateUser(CreateUserRequest) returns (UserResponse) {}
   rpc UpdateUser(UpdateUserRequest) returns (UserResponse) {}
