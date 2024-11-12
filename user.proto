@@ -5,7 +5,7 @@ package songcontestrater;
 import "google/protobuf/timestamp.proto";
 import "rating.proto";
 
-option go_package = "github.com/hyperremix/song-contest-rater-proto";
+option go_package = "protos/songcontestrater";
 
 message GetUserRequest { string id = 1; }
 

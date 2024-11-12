@@ -5,7 +5,7 @@ package songcontestrater;
 import "act.proto";
 import "google/protobuf/empty.proto";
 
-option go_package = "github.com/hyperremix/song-contest-rater-proto";
+option go_package = "protos/songcontestrater";
 
 service Act {
   rpc ListActs(google.protobuf.Empty) returns (stream ListActsResponse) {}
