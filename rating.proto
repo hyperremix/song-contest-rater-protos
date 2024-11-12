@@ -6,13 +6,13 @@ import "google/protobuf/timestamp.proto";
 
 option go_package = "protos/songcontestrater";
 
+message ListUserRatingsRequest { string user_id = 1; }
+
+message ListCompetitionRatingsRequest { string competition_id = 1; }
+
+message ListActRatingsRequest { string act_id = 1; }
+
 message GetRatingRequest { string id = 1; }
-
-message GetRatingByUserRequest { string user_id = 1; }
-
-message GetRatingByCompetitionRequest { string competition_id = 1; }
-
-message GetRatingByActRequest { string act_id = 1; }
 
 message CreateRatingRequest {
   string user_id = 1;

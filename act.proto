@@ -6,7 +6,7 @@ import "google/protobuf/timestamp.proto";
 
 option go_package = "protos/songcontestrater";
 
-message GetCompetitionActsRequest { string competition_id = 1; }
+message ListCompetitionActsRequest { string competition_id = 1; }
 
 message GetActRequest { string id = 1; }
 
