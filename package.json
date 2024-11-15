@@ -17,5 +17,8 @@
     "*.proto": [
       "protolint lint ."
     ]
-  }
+  },
+  "files": [
+    "*.proto"
+  ]
 }
