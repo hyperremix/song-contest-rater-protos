@@ -12,19 +12,17 @@ message GetUserRequest { string id = 1; }
 
 message CreateUserRequest {
   string email = 1;
-  string password = 2;
-  string firstname = 3;
-  string lastname = 4;
-  string image_url = 5;
+  string firstname = 2;
+  string lastname = 3;
+  string image_url = 4;
 }
 
 message UpdateUserRequest {
   string id = 1;
   string email = 2;
-  string password = 3;
-  string firstname = 4;
-  string lastname = 5;
-  string image_url = 6;
+  string firstname = 3;
+  string lastname = 4;
+  string image_url = 5;
 }
 
 message DeleteUserRequest { string id = 1; }
