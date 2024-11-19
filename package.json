@@ -1,6 +1,6 @@
 {
   "name": "@hyperremix/song-contest-rater-proto",
-  "version": "1.0.18",
+  "version": "1.0.19",
   "author": "Fredrik Pettersson <fredrik.pettersson.89@gmail.com>",
   "license": "MIT",
   "scripts": {
