@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package songcontestrater;
+
+option go_package = "protos/songcontestrater";
+
+message CreateParticipationRequest {
+  string competition_id = 1;
+  string act_id = 2;
+}
