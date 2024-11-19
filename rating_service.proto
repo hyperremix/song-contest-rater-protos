@@ -10,7 +10,6 @@ option go_package = "protos/songcontestrater";
 service Rating {
   rpc ListRatings(google.protobuf.Empty) returns (ListRatingsResponse) {}
   rpc ListUserRatings(ListUserRatingsRequest) returns (ListRatingsResponse) {}
-  rpc ListActRatings(ListActRatingsRequest) returns (ListRatingsResponse) {}
   rpc GetRating(GetRatingRequest) returns (RatingResponse) {}
   rpc CreateRating(CreateRatingRequest) returns (RatingResponse) {}
   rpc UpdateRating(UpdateRatingRequest) returns (RatingResponse) {}
