@@ -4,7 +4,6 @@ package songcontestrater;
 
 import "act.proto";
 import "google/protobuf/timestamp.proto";
-import "user.proto";
 
 option go_package = "protos/songcontestrater";
 
@@ -37,7 +36,6 @@ message CompetitionResponse {
   google.protobuf.Timestamp start_time = 5;
   string image_url = 6;
   repeated ActResponse acts = 7;
-  repeated UserResponse users = 8;
   google.protobuf.Timestamp created_at = 9;
   google.protobuf.Timestamp updated_at = 10;
 }
