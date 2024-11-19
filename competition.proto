@@ -36,8 +36,8 @@ message CompetitionResponse {
   google.protobuf.Timestamp start_time = 5;
   string image_url = 6;
   repeated ActResponse acts = 7;
-  google.protobuf.Timestamp created_at = 9;
-  google.protobuf.Timestamp updated_at = 10;
+  google.protobuf.Timestamp created_at = 8;
+  google.protobuf.Timestamp updated_at = 9;
 }
 
 message ListCompetitionsResponse {

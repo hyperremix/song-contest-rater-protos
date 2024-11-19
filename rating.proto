@@ -46,9 +46,9 @@ message RatingResponse {
   int32 show = 7;
   int32 looks = 8;
   int32 clothes = 9;
-  UserResponse users = 8;
-  google.protobuf.Timestamp created_at = 10;
-  google.protobuf.Timestamp updated_at = 11;
+  UserResponse users = 10;
+  google.protobuf.Timestamp created_at = 11;
+  google.protobuf.Timestamp updated_at = 12;
 }
 
 message ListRatingsResponse { repeated RatingResponse ratings = 1; }
