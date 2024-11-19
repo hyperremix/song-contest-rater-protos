@@ -3,6 +3,7 @@ syntax = "proto3";
 package songcontestrater;
 
 import "google/protobuf/timestamp.proto";
+import "rating.proto";
 
 option go_package = "protos/songcontestrater";
 
@@ -30,8 +31,9 @@ message ActResponse {
   string artist_name = 2;
   string song_name = 3;
   string image_url = 4;
-  google.protobuf.Timestamp created_at = 5;
-  google.protobuf.Timestamp updated_at = 6;
+  repeated RatingResponse ratings = 5;
+  google.protobuf.Timestamp created_at = 6;
+  google.protobuf.Timestamp updated_at = 7;
 }
 
 message ListActsResponse { repeated ActResponse acts = 1; }
