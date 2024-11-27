@@ -31,9 +31,10 @@ message ActResponse {
   string artist_name = 2;
   string song_name = 3;
   string image_url = 4;
-  repeated RatingResponse ratings = 5;
-  google.protobuf.Timestamp created_at = 6;
-  google.protobuf.Timestamp updated_at = 7;
+  int32 order = 5;
+  repeated RatingResponse ratings = 6;
+  google.protobuf.Timestamp created_at = 7;
+  google.protobuf.Timestamp updated_at = 8;
 }
 
 message ListActsResponse { repeated ActResponse acts = 1; }
