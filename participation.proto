@@ -7,4 +7,5 @@ option go_package = "protos/songcontestrater";
 message CreateParticipationRequest {
   string competition_id = 1;
   string act_id = 2;
+  int32 order = 3;
 }
