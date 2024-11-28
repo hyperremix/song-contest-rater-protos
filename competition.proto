@@ -9,8 +9,20 @@ option go_package = "protos/songcontestrater";
 
 message GetCompetitionRequest { string id = 1; }
 
+enum Heat {
+  HEAT_UNSPECIFIED = 0;
+  HEAT_SEMI_FINAL = 1;
+  HEAT_FINAL = 2;
+  HEAT_1 = 3;
+  HEAT_2 = 4;
+  HEAT_3 = 5;
+  HEAT_4 = 6;
+  HEAT_5 = 7;
+  HEAT_FINAL_QUALIFIER = 8;
+}
+
 message CreateCompetitionRequest {
-  string description = 1;
+  Heat heat = 1;
   string city = 2;
   string country = 3;
   google.protobuf.Timestamp start_time = 4;
@@ -19,7 +31,7 @@ message CreateCompetitionRequest {
 
 message UpdateCompetitionRequest {
   string id = 1;
-  string description = 2;
+  Heat heat = 2;
   string city = 3;
   string country = 4;
   google.protobuf.Timestamp start_time = 5;
@@ -30,7 +42,7 @@ message DeleteCompetitionRequest { string id = 1; }
 
 message CompetitionResponse {
   string id = 1;
-  string description = 2;
+  Heat heat = 2;
   string city = 3;
   string country = 4;
   google.protobuf.Timestamp start_time = 5;
