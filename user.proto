@@ -37,3 +37,5 @@ message UserResponse {
 }
 
 message ListUsersResponse { repeated UserResponse users = 1; }
+
+message UploadProfilePictureResponse { string image_url = 1; }
