@@ -45,4 +45,7 @@ message GetPresignedURLRequest {
   string content_type = 2;
 }
 
-message GetPresignedURLResponse { string url = 1; }
+message GetPresignedURLResponse {
+  string presigned_url = 1;
+  string image_url = 2;
+}
