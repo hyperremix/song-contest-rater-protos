@@ -38,8 +38,6 @@ message UserResponse {
 
 message ListUsersResponse { repeated UserResponse users = 1; }
 
-message UploadProfilePictureResponse { string image_url = 1; }
-
 message GetPresignedURLRequest {
   string file_name = 1;
   string content_type = 2;
