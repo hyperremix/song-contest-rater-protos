@@ -3,6 +3,7 @@ syntax = "proto3";
 package songcontestrater;
 
 import "google/protobuf/timestamp.proto";
+import "user.proto";
 
 option go_package = "protos/songcontestrater";
 
@@ -18,11 +19,11 @@ enum CriticType {
 }
 
 message UserStatsResponse {
-  string user_id = 1;
-  double user_rating_avg = 2;
-  int32 total_ratings = 3;
-  double rating_bias = 4;
-  CriticType critic_type = 5;
+  double user_rating_avg = 1;
+  int32 total_ratings = 2;
+  double rating_bias = 3;
+  CriticType critic_type = 4;
+  UserResponse user = 5;
   google.protobuf.Timestamp created_at = 6;
   google.protobuf.Timestamp updated_at = 7;
 }
