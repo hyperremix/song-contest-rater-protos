@@ -4,6 +4,16 @@ package songcontestrater;
 
 option go_package = "protos/songcontestrater";
 
+message ParticipationResponse {
+  string competition_id = 1;
+  string act_id = 2;
+  int32 order = 3;
+}
+
+message ListParticipationsResponse {
+  repeated ParticipationResponse participations = 1;
+}
+
 message CreateParticipationRequest {
   string competition_id = 1;
   string act_id = 2;
