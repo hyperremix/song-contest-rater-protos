@@ -5,7 +5,7 @@ package songcontestrater;
 import "competition.proto";
 import "google/protobuf/empty.proto";
 
-option go_package = "protos/songcontestrater";
+option go_package = ".";
 
 service Competition {
   rpc ListCompetitions(google.protobuf.Empty)

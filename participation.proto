@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package songcontestrater;
 
-option go_package = "protos/songcontestrater";
+option go_package = ".";
 
 message ParticipationResponse {
   string competition_id = 1;

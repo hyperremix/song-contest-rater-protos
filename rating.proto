@@ -5,7 +5,7 @@ package songcontestrater;
 import "google/protobuf/timestamp.proto";
 import "user.proto";
 
-option go_package = "protos/songcontestrater";
+option go_package = ".";
 
 message ListUserRatingsRequest { string user_id = 1; }
 
