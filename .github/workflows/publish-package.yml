@@ -12,10 +12,14 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 22
           registry-url: https://npm.pkg.github.com/
-      - run: yarn
-      - run: yarn lint
-      - run: yarn publish
+      - uses: arduino/setup-protoc@v3
+        with:
+          version: "29.3"
+      - run: pnpm install
+      - run: pnpm lint
+      - run: pnpm ts-proto:generate
+      - run: cd ts-protos && pnpm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
