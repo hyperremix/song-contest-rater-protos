@@ -1,3 +1,4 @@
 node_modules
 dist
-**/*.ts
+*.ts
+!index.ts
