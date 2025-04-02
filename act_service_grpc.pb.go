@@ -4,7 +4,7 @@
 // - protoc             v5.29.3
 // source: act_service.proto
 
-package __
+package song_contest_rater_proto
 
 import (
 	context "context"
