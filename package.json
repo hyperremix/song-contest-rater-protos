@@ -1,10 +1,12 @@
 {
   "name": "@hyperremix/song-contest-rater-proto",
-  "version": "1.0.35",
+  "version": "2.0.0",
   "author": "Fredrik Pettersson <fredrik.pettersson.89@gmail.com>",
   "license": "MIT",
   "scripts": {
     "lint": "protolint lint .",
+    "version:major": "yarn version --new-version major && git push --follow-tags",
+    "version:minor": "yarn version --new-version minor && git push --follow-tags",
     "version:patch": "yarn version --new-version patch && git push --follow-tags",
     "ts-proto:generate": "mkdir -p ts-protos && protoc -I=. --plugin=./node_modules/.bin/protoc-gen-ts_proto --ts_proto_opt=esModuleInterop=true --ts_proto_opt=useDate=false --ts_proto_opt=snakeToCamel=false --ts_proto_opt=unrecognizedEnum=false --ts_proto_opt=useNumericEnumForJson=true --ts_proto_out=./ts-protos ./*.proto && cp package.json ts-protos/package.json",
     "prepare": "husky"
