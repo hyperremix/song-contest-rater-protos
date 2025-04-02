@@ -1,6 +1,6 @@
 {
   "name": "@hyperremix/songcontestraterprotos",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "author": "Fredrik Pettersson <fredrik.pettersson.89@gmail.com>",
   "license": "MIT",
   "main": "dist/index.js",
