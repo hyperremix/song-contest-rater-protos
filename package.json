@@ -5,11 +5,11 @@
   "license": "MIT",
   "scripts": {
     "lint": "protolint lint .",
-    "version:major": "pnpm version --new-version major && git push --follow-tags",
-    "version:minor": "pnpm version --new-version minor && git push --follow-tags",
-    "version:patch": "pnpm version --new-version patch && git push --follow-tags",
+    "version:major": "pnpm --prefix ts-protos version --new-version major && git push --follow-tags",
+    "version:minor": "pnpm --prefix ts-protos version --new-version minor && git push --follow-tags",
+    "version:patch": "pnpm --prefix ts-protos version --new-version patch && git push --follow-tags",
     "ts-proto:generate": "mkdir -p ts-protos && protoc -I=. --plugin=./node_modules/.bin/protoc-gen-ts_proto --ts_proto_opt=esModuleInterop=true --ts_proto_opt=useDate=false --ts_proto_opt=snakeToCamel=false --ts_proto_opt=unrecognizedEnum=false --ts_proto_opt=useNumericEnumForJson=true --ts_proto_out=./ts-protos ./*.proto && cp package.json ts-protos/package.json",
-    "prepare": "husky"
+    "prepare": "husky && pnpm ts-proto:generate"
   },
   "devDependencies": {
     "husky": "^9.1.6",
@@ -22,8 +22,5 @@
       "protolint lint ."
     ]
   },
-  "files": [
-    "**/*.ts"
-  ],
   "packageManager": "pnpm@10.7.1+sha512.2d92c86b7928dc8284f53494fb4201f983da65f0fb4f0d40baafa5cf628fa31dae3e5968f12466f17df7e97310e30f343a648baea1b9b350685dafafffdf5808"
 }

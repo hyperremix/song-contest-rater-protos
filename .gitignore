@@ -1,2 +1,3 @@
 node_modules
-ts-protos
+ts-protos/dist
+ts-protos/**/*.ts
