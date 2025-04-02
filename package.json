@@ -3,24 +3,32 @@
   "version": "2.0.6",
   "author": "Fredrik Pettersson <fredrik.pettersson.89@gmail.com>",
   "license": "MIT",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
+    "build": "tsc",
     "lint": "protolint lint .",
-    "version:major": "pnpm version --prefix ts-protos --new-version major && git push --follow-tags",
-    "version:minor": "pnpm version --prefix ts-protos --new-version minor && git push --follow-tags",
-    "version:patch": "pnpm version --prefix ts-protos --new-version patch && git push --follow-tags",
-    "ts-proto:generate": "mkdir -p ts-protos && protoc -I=. --plugin=./node_modules/.bin/protoc-gen-ts_proto --ts_proto_opt=esModuleInterop=true --ts_proto_opt=useDate=false --ts_proto_opt=snakeToCamel=false --ts_proto_opt=unrecognizedEnum=false --ts_proto_opt=useNumericEnumForJson=true --ts_proto_out=./ts-protos ./*.proto && cp package.json ts-protos/package.json",
+    "version:major": "pnpm version --new-version major && git push --follow-tags",
+    "version:minor": "pnpm version --new-version minor && git push --follow-tags",
+    "version:patch": "pnpm version --new-version patch && git push --follow-tags",
+    "ts-proto:generate": "protoc -I=. --plugin=./node_modules/.bin/protoc-gen-ts_proto --ts_proto_opt=esModuleInterop=true --ts_proto_opt=useDate=false --ts_proto_opt=snakeToCamel=false --ts_proto_opt=unrecognizedEnum=false --ts_proto_opt=useNumericEnumForJson=true --ts_proto_out=. ./*.proto",
     "prepare": "husky && pnpm ts-proto:generate"
   },
   "devDependencies": {
+    "@types/node": "^22.13.17",
     "husky": "^9.1.6",
     "lint-staged": "^15.2.10",
     "protolint": "^0.50.5",
-    "ts-proto": "^2.7.0"
+    "ts-proto": "^2.7.0",
+    "typescript": "^5.8.2"
   },
   "lint-staged": {
     "*.proto": [
       "protolint lint ."
     ]
   },
-  "packageManager": "pnpm@10.7.1+sha512.2d92c86b7928dc8284f53494fb4201f983da65f0fb4f0d40baafa5cf628fa31dae3e5968f12466f17df7e97310e30f343a648baea1b9b350685dafafffdf5808"
+  "packageManager": "pnpm@10.7.1+sha512.2d92c86b7928dc8284f53494fb4201f983da65f0fb4f0d40baafa5cf628fa31dae3e5968f12466f17df7e97310e30f343a648baea1b9b350685dafafffdf5808",
+  "dependencies": {
+    "@bufbuild/protobuf": "^2.2.5"
+  }
 }

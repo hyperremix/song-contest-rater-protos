@@ -21,8 +21,7 @@ jobs:
           version: "29.3"
       - run: pnpm install
       - run: pnpm lint
-      - run: pnpm install --prefix ts-protos
-      - run: pnpm build --prefix ts-protos
-      - run: pnpm publish --prefix ts-protos --no-git-checks
+      - run: pnpm build
+      - run: pnpm publish --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
