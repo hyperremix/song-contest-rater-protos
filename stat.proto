@@ -5,7 +5,7 @@ package songcontestrater;
 import "google/protobuf/timestamp.proto";
 import "user.proto";
 
-option go_package = ".;song_contest_rater_proto";
+option go_package = ".;songcontestraterprotos";
 
 message ListUserStatsResponse { repeated UserStatsResponse stats = 1; }
 

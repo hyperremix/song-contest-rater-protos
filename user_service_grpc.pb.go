@@ -4,7 +4,7 @@
 // - protoc             v5.29.3
 // source: user_service.proto
 
-package song_contest_rater_proto
+package songcontestraterprotos
 
 import (
 	context "context"
