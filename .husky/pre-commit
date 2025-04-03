@@ -1,1 +1,6 @@
+#!/bin/sh
+
 pnpm lint-staged
+pnpm ts-proto:generate
+make go-proto-generate
+git add -A

@@ -1,4 +1,4 @@
-module github.com/hyperremix/songcontestraterprotos/v3
+module github.com/hyperremix/song-contest-rater-protos/v3
 
 go 1.23
 
