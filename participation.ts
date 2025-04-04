@@ -10,7 +10,7 @@ import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
 export const protobufPackage = "songcontestrater";
 
 export interface ParticipationResponse {
-  competition_id: string;
+  contest_id: string;
   act_id: string;
   order: number;
 }
@@ -20,24 +20,24 @@ export interface ListParticipationsResponse {
 }
 
 export interface CreateParticipationRequest {
-  competition_id: string;
+  contest_id: string;
   act_id: string;
   order: number;
 }
 
 export interface DeleteParticipationRequest {
-  competition_id: string;
+  contest_id: string;
   act_id: string;
 }
 
 function createBaseParticipationResponse(): ParticipationResponse {
-  return { competition_id: "", act_id: "", order: 0 };
+  return { contest_id: "", act_id: "", order: 0 };
 }
 
 export const ParticipationResponse: MessageFns<ParticipationResponse> = {
   encode(message: ParticipationResponse, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (message.competition_id !== "") {
-      writer.uint32(10).string(message.competition_id);
+    if (message.contest_id !== "") {
+      writer.uint32(10).string(message.contest_id);
     }
     if (message.act_id !== "") {
       writer.uint32(18).string(message.act_id);
@@ -60,7 +60,7 @@ export const ParticipationResponse: MessageFns<ParticipationResponse> = {
             break;
           }
 
-          message.competition_id = reader.string();
+          message.contest_id = reader.string();
           continue;
         }
         case 2: {
@@ -90,7 +90,7 @@ export const ParticipationResponse: MessageFns<ParticipationResponse> = {
 
   fromJSON(object: any): ParticipationResponse {
     return {
-      competition_id: isSet(object.competition_id) ? globalThis.String(object.competition_id) : "",
+      contest_id: isSet(object.contest_id) ? globalThis.String(object.contest_id) : "",
       act_id: isSet(object.act_id) ? globalThis.String(object.act_id) : "",
       order: isSet(object.order) ? globalThis.Number(object.order) : 0,
     };
@@ -98,8 +98,8 @@ export const ParticipationResponse: MessageFns<ParticipationResponse> = {
 
   toJSON(message: ParticipationResponse): unknown {
     const obj: any = {};
-    if (message.competition_id !== "") {
-      obj.competition_id = message.competition_id;
+    if (message.contest_id !== "") {
+      obj.contest_id = message.contest_id;
     }
     if (message.act_id !== "") {
       obj.act_id = message.act_id;
@@ -115,7 +115,7 @@ export const ParticipationResponse: MessageFns<ParticipationResponse> = {
   },
   fromPartial<I extends Exact<DeepPartial<ParticipationResponse>, I>>(object: I): ParticipationResponse {
     const message = createBaseParticipationResponse();
-    message.competition_id = object.competition_id ?? "";
+    message.contest_id = object.contest_id ?? "";
     message.act_id = object.act_id ?? "";
     message.order = object.order ?? 0;
     return message;
@@ -185,13 +185,13 @@ export const ListParticipationsResponse: MessageFns<ListParticipationsResponse> 
 };
 
 function createBaseCreateParticipationRequest(): CreateParticipationRequest {
-  return { competition_id: "", act_id: "", order: 0 };
+  return { contest_id: "", act_id: "", order: 0 };
 }
 
 export const CreateParticipationRequest: MessageFns<CreateParticipationRequest> = {
   encode(message: CreateParticipationRequest, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (message.competition_id !== "") {
-      writer.uint32(10).string(message.competition_id);
+    if (message.contest_id !== "") {
+      writer.uint32(10).string(message.contest_id);
     }
     if (message.act_id !== "") {
       writer.uint32(18).string(message.act_id);
@@ -214,7 +214,7 @@ export const CreateParticipationRequest: MessageFns<CreateParticipationRequest> 
             break;
           }
 
-          message.competition_id = reader.string();
+          message.contest_id = reader.string();
           continue;
         }
         case 2: {
@@ -244,7 +244,7 @@ export const CreateParticipationRequest: MessageFns<CreateParticipationRequest> 
 
   fromJSON(object: any): CreateParticipationRequest {
     return {
-      competition_id: isSet(object.competition_id) ? globalThis.String(object.competition_id) : "",
+      contest_id: isSet(object.contest_id) ? globalThis.String(object.contest_id) : "",
       act_id: isSet(object.act_id) ? globalThis.String(object.act_id) : "",
       order: isSet(object.order) ? globalThis.Number(object.order) : 0,
     };
@@ -252,8 +252,8 @@ export const CreateParticipationRequest: MessageFns<CreateParticipationRequest> 
 
   toJSON(message: CreateParticipationRequest): unknown {
     const obj: any = {};
-    if (message.competition_id !== "") {
-      obj.competition_id = message.competition_id;
+    if (message.contest_id !== "") {
+      obj.contest_id = message.contest_id;
     }
     if (message.act_id !== "") {
       obj.act_id = message.act_id;
@@ -269,7 +269,7 @@ export const CreateParticipationRequest: MessageFns<CreateParticipationRequest> 
   },
   fromPartial<I extends Exact<DeepPartial<CreateParticipationRequest>, I>>(object: I): CreateParticipationRequest {
     const message = createBaseCreateParticipationRequest();
-    message.competition_id = object.competition_id ?? "";
+    message.contest_id = object.contest_id ?? "";
     message.act_id = object.act_id ?? "";
     message.order = object.order ?? 0;
     return message;
@@ -277,13 +277,13 @@ export const CreateParticipationRequest: MessageFns<CreateParticipationRequest> 
 };
 
 function createBaseDeleteParticipationRequest(): DeleteParticipationRequest {
-  return { competition_id: "", act_id: "" };
+  return { contest_id: "", act_id: "" };
 }
 
 export const DeleteParticipationRequest: MessageFns<DeleteParticipationRequest> = {
   encode(message: DeleteParticipationRequest, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (message.competition_id !== "") {
-      writer.uint32(10).string(message.competition_id);
+    if (message.contest_id !== "") {
+      writer.uint32(10).string(message.contest_id);
     }
     if (message.act_id !== "") {
       writer.uint32(18).string(message.act_id);
@@ -303,7 +303,7 @@ export const DeleteParticipationRequest: MessageFns<DeleteParticipationRequest> 
             break;
           }
 
-          message.competition_id = reader.string();
+          message.contest_id = reader.string();
           continue;
         }
         case 2: {
@@ -325,15 +325,15 @@ export const DeleteParticipationRequest: MessageFns<DeleteParticipationRequest> 
 
   fromJSON(object: any): DeleteParticipationRequest {
     return {
-      competition_id: isSet(object.competition_id) ? globalThis.String(object.competition_id) : "",
+      contest_id: isSet(object.contest_id) ? globalThis.String(object.contest_id) : "",
       act_id: isSet(object.act_id) ? globalThis.String(object.act_id) : "",
     };
   },
 
   toJSON(message: DeleteParticipationRequest): unknown {
     const obj: any = {};
-    if (message.competition_id !== "") {
-      obj.competition_id = message.competition_id;
+    if (message.contest_id !== "") {
+      obj.contest_id = message.contest_id;
     }
     if (message.act_id !== "") {
       obj.act_id = message.act_id;
@@ -346,7 +346,7 @@ export const DeleteParticipationRequest: MessageFns<DeleteParticipationRequest> 
   },
   fromPartial<I extends Exact<DeepPartial<DeleteParticipationRequest>, I>>(object: I): DeleteParticipationRequest {
     const message = createBaseDeleteParticipationRequest();
-    message.competition_id = object.competition_id ?? "";
+    message.contest_id = object.contest_id ?? "";
     message.act_id = object.act_id ?? "";
     return message;
   },
