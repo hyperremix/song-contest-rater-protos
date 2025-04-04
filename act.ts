@@ -11,10 +11,6 @@ import { RatingResponse } from "./rating";
 
 export const protobufPackage = "songcontestrater";
 
-export interface ListCompetitionActsRequest {
-  competition_id: string;
-}
-
 export interface GetActRequest {
   id: string;
 }
@@ -50,64 +46,6 @@ export interface ActResponse {
 export interface ListActsResponse {
   acts: ActResponse[];
 }
-
-function createBaseListCompetitionActsRequest(): ListCompetitionActsRequest {
-  return { competition_id: "" };
-}
-
-export const ListCompetitionActsRequest: MessageFns<ListCompetitionActsRequest> = {
-  encode(message: ListCompetitionActsRequest, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (message.competition_id !== "") {
-      writer.uint32(10).string(message.competition_id);
-    }
-    return writer;
-  },
-
-  decode(input: BinaryReader | Uint8Array, length?: number): ListCompetitionActsRequest {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseListCompetitionActsRequest();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1: {
-          if (tag !== 10) {
-            break;
-          }
-
-          message.competition_id = reader.string();
-          continue;
-        }
-      }
-      if ((tag & 7) === 4 || tag === 0) {
-        break;
-      }
-      reader.skip(tag & 7);
-    }
-    return message;
-  },
-
-  fromJSON(object: any): ListCompetitionActsRequest {
-    return { competition_id: isSet(object.competition_id) ? globalThis.String(object.competition_id) : "" };
-  },
-
-  toJSON(message: ListCompetitionActsRequest): unknown {
-    const obj: any = {};
-    if (message.competition_id !== "") {
-      obj.competition_id = message.competition_id;
-    }
-    return obj;
-  },
-
-  create<I extends Exact<DeepPartial<ListCompetitionActsRequest>, I>>(base?: I): ListCompetitionActsRequest {
-    return ListCompetitionActsRequest.fromPartial(base ?? ({} as any));
-  },
-  fromPartial<I extends Exact<DeepPartial<ListCompetitionActsRequest>, I>>(object: I): ListCompetitionActsRequest {
-    const message = createBaseListCompetitionActsRequest();
-    message.competition_id = object.competition_id ?? "";
-    return message;
-  },
-};
 
 function createBaseGetActRequest(): GetActRequest {
   return { id: "" };

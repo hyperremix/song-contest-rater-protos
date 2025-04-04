@@ -7,7 +7,7 @@ import "google/protobuf/timestamp.proto";
 
 option go_package = ".;songcontestraterprotos";
 
-message GetCompetitionRequest { string id = 1; }
+message GetContestRequest { string id = 1; }
 
 enum Heat {
   HEAT_UNSPECIFIED = 0;
@@ -21,7 +21,7 @@ enum Heat {
   HEAT_FINAL_QUALIFIER = 8;
 }
 
-message CreateCompetitionRequest {
+message CreateContestRequest {
   Heat heat = 1;
   string city = 2;
   string country = 3;
@@ -29,7 +29,7 @@ message CreateCompetitionRequest {
   string image_url = 5;
 }
 
-message UpdateCompetitionRequest {
+message UpdateContestRequest {
   string id = 1;
   Heat heat = 2;
   string city = 3;
@@ -38,9 +38,9 @@ message UpdateCompetitionRequest {
   string image_url = 6;
 }
 
-message DeleteCompetitionRequest { string id = 1; }
+message DeleteContestRequest { string id = 1; }
 
-message CompetitionResponse {
+message ContestResponse {
   string id = 1;
   Heat heat = 2;
   string city = 3;
@@ -52,6 +52,4 @@ message CompetitionResponse {
   google.protobuf.Timestamp updated_at = 9;
 }
 
-message ListCompetitionsResponse {
-  repeated CompetitionResponse competitions = 1;
-}
+message ListContestsResponse { repeated ContestResponse contests = 1; }

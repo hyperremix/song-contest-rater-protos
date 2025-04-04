@@ -2,7 +2,7 @@
 // versions:
 //   protoc-gen-ts_proto  v2.7.0
 //   protoc               v5.29.3
-// source: competition.proto
+// source: contest.proto
 
 /* eslint-disable */
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
@@ -82,11 +82,11 @@ export function heatToJSON(object: Heat): number {
   }
 }
 
-export interface GetCompetitionRequest {
+export interface GetContestRequest {
   id: string;
 }
 
-export interface CreateCompetitionRequest {
+export interface CreateContestRequest {
   heat: Heat;
   city: string;
   country: string;
@@ -94,7 +94,7 @@ export interface CreateCompetitionRequest {
   image_url: string;
 }
 
-export interface UpdateCompetitionRequest {
+export interface UpdateContestRequest {
   id: string;
   heat: Heat;
   city: string;
@@ -103,11 +103,11 @@ export interface UpdateCompetitionRequest {
   image_url: string;
 }
 
-export interface DeleteCompetitionRequest {
+export interface DeleteContestRequest {
   id: string;
 }
 
-export interface CompetitionResponse {
+export interface ContestResponse {
   id: string;
   heat: Heat;
   city: string;
@@ -119,26 +119,26 @@ export interface CompetitionResponse {
   updated_at: Timestamp | undefined;
 }
 
-export interface ListCompetitionsResponse {
-  competitions: CompetitionResponse[];
+export interface ListContestsResponse {
+  contests: ContestResponse[];
 }
 
-function createBaseGetCompetitionRequest(): GetCompetitionRequest {
+function createBaseGetContestRequest(): GetContestRequest {
   return { id: "" };
 }
 
-export const GetCompetitionRequest: MessageFns<GetCompetitionRequest> = {
-  encode(message: GetCompetitionRequest, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+export const GetContestRequest: MessageFns<GetContestRequest> = {
+  encode(message: GetContestRequest, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
     if (message.id !== "") {
       writer.uint32(10).string(message.id);
     }
     return writer;
   },
 
-  decode(input: BinaryReader | Uint8Array, length?: number): GetCompetitionRequest {
+  decode(input: BinaryReader | Uint8Array, length?: number): GetContestRequest {
     const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseGetCompetitionRequest();
+    const message = createBaseGetContestRequest();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -159,11 +159,11 @@ export const GetCompetitionRequest: MessageFns<GetCompetitionRequest> = {
     return message;
   },
 
-  fromJSON(object: any): GetCompetitionRequest {
+  fromJSON(object: any): GetContestRequest {
     return { id: isSet(object.id) ? globalThis.String(object.id) : "" };
   },
 
-  toJSON(message: GetCompetitionRequest): unknown {
+  toJSON(message: GetContestRequest): unknown {
     const obj: any = {};
     if (message.id !== "") {
       obj.id = message.id;
@@ -171,22 +171,22 @@ export const GetCompetitionRequest: MessageFns<GetCompetitionRequest> = {
     return obj;
   },
 
-  create<I extends Exact<DeepPartial<GetCompetitionRequest>, I>>(base?: I): GetCompetitionRequest {
-    return GetCompetitionRequest.fromPartial(base ?? ({} as any));
+  create<I extends Exact<DeepPartial<GetContestRequest>, I>>(base?: I): GetContestRequest {
+    return GetContestRequest.fromPartial(base ?? ({} as any));
   },
-  fromPartial<I extends Exact<DeepPartial<GetCompetitionRequest>, I>>(object: I): GetCompetitionRequest {
-    const message = createBaseGetCompetitionRequest();
+  fromPartial<I extends Exact<DeepPartial<GetContestRequest>, I>>(object: I): GetContestRequest {
+    const message = createBaseGetContestRequest();
     message.id = object.id ?? "";
     return message;
   },
 };
 
-function createBaseCreateCompetitionRequest(): CreateCompetitionRequest {
+function createBaseCreateContestRequest(): CreateContestRequest {
   return { heat: 0, city: "", country: "", start_time: undefined, image_url: "" };
 }
 
-export const CreateCompetitionRequest: MessageFns<CreateCompetitionRequest> = {
-  encode(message: CreateCompetitionRequest, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+export const CreateContestRequest: MessageFns<CreateContestRequest> = {
+  encode(message: CreateContestRequest, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
     if (message.heat !== 0) {
       writer.uint32(8).int32(message.heat);
     }
@@ -205,10 +205,10 @@ export const CreateCompetitionRequest: MessageFns<CreateCompetitionRequest> = {
     return writer;
   },
 
-  decode(input: BinaryReader | Uint8Array, length?: number): CreateCompetitionRequest {
+  decode(input: BinaryReader | Uint8Array, length?: number): CreateContestRequest {
     const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseCreateCompetitionRequest();
+    const message = createBaseCreateContestRequest();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -261,7 +261,7 @@ export const CreateCompetitionRequest: MessageFns<CreateCompetitionRequest> = {
     return message;
   },
 
-  fromJSON(object: any): CreateCompetitionRequest {
+  fromJSON(object: any): CreateContestRequest {
     return {
       heat: isSet(object.heat) ? heatFromJSON(object.heat) : 0,
       city: isSet(object.city) ? globalThis.String(object.city) : "",
@@ -271,7 +271,7 @@ export const CreateCompetitionRequest: MessageFns<CreateCompetitionRequest> = {
     };
   },
 
-  toJSON(message: CreateCompetitionRequest): unknown {
+  toJSON(message: CreateContestRequest): unknown {
     const obj: any = {};
     if (message.heat !== 0) {
       obj.heat = heatToJSON(message.heat);
@@ -291,11 +291,11 @@ export const CreateCompetitionRequest: MessageFns<CreateCompetitionRequest> = {
     return obj;
   },
 
-  create<I extends Exact<DeepPartial<CreateCompetitionRequest>, I>>(base?: I): CreateCompetitionRequest {
-    return CreateCompetitionRequest.fromPartial(base ?? ({} as any));
+  create<I extends Exact<DeepPartial<CreateContestRequest>, I>>(base?: I): CreateContestRequest {
+    return CreateContestRequest.fromPartial(base ?? ({} as any));
   },
-  fromPartial<I extends Exact<DeepPartial<CreateCompetitionRequest>, I>>(object: I): CreateCompetitionRequest {
-    const message = createBaseCreateCompetitionRequest();
+  fromPartial<I extends Exact<DeepPartial<CreateContestRequest>, I>>(object: I): CreateContestRequest {
+    const message = createBaseCreateContestRequest();
     message.heat = object.heat ?? 0;
     message.city = object.city ?? "";
     message.country = object.country ?? "";
@@ -307,12 +307,12 @@ export const CreateCompetitionRequest: MessageFns<CreateCompetitionRequest> = {
   },
 };
 
-function createBaseUpdateCompetitionRequest(): UpdateCompetitionRequest {
+function createBaseUpdateContestRequest(): UpdateContestRequest {
   return { id: "", heat: 0, city: "", country: "", start_time: undefined, image_url: "" };
 }
 
-export const UpdateCompetitionRequest: MessageFns<UpdateCompetitionRequest> = {
-  encode(message: UpdateCompetitionRequest, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+export const UpdateContestRequest: MessageFns<UpdateContestRequest> = {
+  encode(message: UpdateContestRequest, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
     if (message.id !== "") {
       writer.uint32(10).string(message.id);
     }
@@ -334,10 +334,10 @@ export const UpdateCompetitionRequest: MessageFns<UpdateCompetitionRequest> = {
     return writer;
   },
 
-  decode(input: BinaryReader | Uint8Array, length?: number): UpdateCompetitionRequest {
+  decode(input: BinaryReader | Uint8Array, length?: number): UpdateContestRequest {
     const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseUpdateCompetitionRequest();
+    const message = createBaseUpdateContestRequest();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -398,7 +398,7 @@ export const UpdateCompetitionRequest: MessageFns<UpdateCompetitionRequest> = {
     return message;
   },
 
-  fromJSON(object: any): UpdateCompetitionRequest {
+  fromJSON(object: any): UpdateContestRequest {
     return {
       id: isSet(object.id) ? globalThis.String(object.id) : "",
       heat: isSet(object.heat) ? heatFromJSON(object.heat) : 0,
@@ -409,7 +409,7 @@ export const UpdateCompetitionRequest: MessageFns<UpdateCompetitionRequest> = {
     };
   },
 
-  toJSON(message: UpdateCompetitionRequest): unknown {
+  toJSON(message: UpdateContestRequest): unknown {
     const obj: any = {};
     if (message.id !== "") {
       obj.id = message.id;
@@ -432,11 +432,11 @@ export const UpdateCompetitionRequest: MessageFns<UpdateCompetitionRequest> = {
     return obj;
   },
 
-  create<I extends Exact<DeepPartial<UpdateCompetitionRequest>, I>>(base?: I): UpdateCompetitionRequest {
-    return UpdateCompetitionRequest.fromPartial(base ?? ({} as any));
+  create<I extends Exact<DeepPartial<UpdateContestRequest>, I>>(base?: I): UpdateContestRequest {
+    return UpdateContestRequest.fromPartial(base ?? ({} as any));
   },
-  fromPartial<I extends Exact<DeepPartial<UpdateCompetitionRequest>, I>>(object: I): UpdateCompetitionRequest {
-    const message = createBaseUpdateCompetitionRequest();
+  fromPartial<I extends Exact<DeepPartial<UpdateContestRequest>, I>>(object: I): UpdateContestRequest {
+    const message = createBaseUpdateContestRequest();
     message.id = object.id ?? "";
     message.heat = object.heat ?? 0;
     message.city = object.city ?? "";
@@ -449,22 +449,22 @@ export const UpdateCompetitionRequest: MessageFns<UpdateCompetitionRequest> = {
   },
 };
 
-function createBaseDeleteCompetitionRequest(): DeleteCompetitionRequest {
+function createBaseDeleteContestRequest(): DeleteContestRequest {
   return { id: "" };
 }
 
-export const DeleteCompetitionRequest: MessageFns<DeleteCompetitionRequest> = {
-  encode(message: DeleteCompetitionRequest, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+export const DeleteContestRequest: MessageFns<DeleteContestRequest> = {
+  encode(message: DeleteContestRequest, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
     if (message.id !== "") {
       writer.uint32(10).string(message.id);
     }
     return writer;
   },
 
-  decode(input: BinaryReader | Uint8Array, length?: number): DeleteCompetitionRequest {
+  decode(input: BinaryReader | Uint8Array, length?: number): DeleteContestRequest {
     const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseDeleteCompetitionRequest();
+    const message = createBaseDeleteContestRequest();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -485,11 +485,11 @@ export const DeleteCompetitionRequest: MessageFns<DeleteCompetitionRequest> = {
     return message;
   },
 
-  fromJSON(object: any): DeleteCompetitionRequest {
+  fromJSON(object: any): DeleteContestRequest {
     return { id: isSet(object.id) ? globalThis.String(object.id) : "" };
   },
 
-  toJSON(message: DeleteCompetitionRequest): unknown {
+  toJSON(message: DeleteContestRequest): unknown {
     const obj: any = {};
     if (message.id !== "") {
       obj.id = message.id;
@@ -497,17 +497,17 @@ export const DeleteCompetitionRequest: MessageFns<DeleteCompetitionRequest> = {
     return obj;
   },
 
-  create<I extends Exact<DeepPartial<DeleteCompetitionRequest>, I>>(base?: I): DeleteCompetitionRequest {
-    return DeleteCompetitionRequest.fromPartial(base ?? ({} as any));
+  create<I extends Exact<DeepPartial<DeleteContestRequest>, I>>(base?: I): DeleteContestRequest {
+    return DeleteContestRequest.fromPartial(base ?? ({} as any));
   },
-  fromPartial<I extends Exact<DeepPartial<DeleteCompetitionRequest>, I>>(object: I): DeleteCompetitionRequest {
-    const message = createBaseDeleteCompetitionRequest();
+  fromPartial<I extends Exact<DeepPartial<DeleteContestRequest>, I>>(object: I): DeleteContestRequest {
+    const message = createBaseDeleteContestRequest();
     message.id = object.id ?? "";
     return message;
   },
 };
 
-function createBaseCompetitionResponse(): CompetitionResponse {
+function createBaseContestResponse(): ContestResponse {
   return {
     id: "",
     heat: 0,
@@ -521,8 +521,8 @@ function createBaseCompetitionResponse(): CompetitionResponse {
   };
 }
 
-export const CompetitionResponse: MessageFns<CompetitionResponse> = {
-  encode(message: CompetitionResponse, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+export const ContestResponse: MessageFns<ContestResponse> = {
+  encode(message: ContestResponse, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
     if (message.id !== "") {
       writer.uint32(10).string(message.id);
     }
@@ -553,10 +553,10 @@ export const CompetitionResponse: MessageFns<CompetitionResponse> = {
     return writer;
   },
 
-  decode(input: BinaryReader | Uint8Array, length?: number): CompetitionResponse {
+  decode(input: BinaryReader | Uint8Array, length?: number): ContestResponse {
     const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseCompetitionResponse();
+    const message = createBaseContestResponse();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -641,7 +641,7 @@ export const CompetitionResponse: MessageFns<CompetitionResponse> = {
     return message;
   },
 
-  fromJSON(object: any): CompetitionResponse {
+  fromJSON(object: any): ContestResponse {
     return {
       id: isSet(object.id) ? globalThis.String(object.id) : "",
       heat: isSet(object.heat) ? heatFromJSON(object.heat) : 0,
@@ -655,7 +655,7 @@ export const CompetitionResponse: MessageFns<CompetitionResponse> = {
     };
   },
 
-  toJSON(message: CompetitionResponse): unknown {
+  toJSON(message: ContestResponse): unknown {
     const obj: any = {};
     if (message.id !== "") {
       obj.id = message.id;
@@ -687,11 +687,11 @@ export const CompetitionResponse: MessageFns<CompetitionResponse> = {
     return obj;
   },
 
-  create<I extends Exact<DeepPartial<CompetitionResponse>, I>>(base?: I): CompetitionResponse {
-    return CompetitionResponse.fromPartial(base ?? ({} as any));
+  create<I extends Exact<DeepPartial<ContestResponse>, I>>(base?: I): ContestResponse {
+    return ContestResponse.fromPartial(base ?? ({} as any));
   },
-  fromPartial<I extends Exact<DeepPartial<CompetitionResponse>, I>>(object: I): CompetitionResponse {
-    const message = createBaseCompetitionResponse();
+  fromPartial<I extends Exact<DeepPartial<ContestResponse>, I>>(object: I): ContestResponse {
+    const message = createBaseContestResponse();
     message.id = object.id ?? "";
     message.heat = object.heat ?? 0;
     message.city = object.city ?? "";
@@ -711,22 +711,22 @@ export const CompetitionResponse: MessageFns<CompetitionResponse> = {
   },
 };
 
-function createBaseListCompetitionsResponse(): ListCompetitionsResponse {
-  return { competitions: [] };
+function createBaseListContestsResponse(): ListContestsResponse {
+  return { contests: [] };
 }
 
-export const ListCompetitionsResponse: MessageFns<ListCompetitionsResponse> = {
-  encode(message: ListCompetitionsResponse, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    for (const v of message.competitions) {
-      CompetitionResponse.encode(v!, writer.uint32(10).fork()).join();
+export const ListContestsResponse: MessageFns<ListContestsResponse> = {
+  encode(message: ListContestsResponse, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+    for (const v of message.contests) {
+      ContestResponse.encode(v!, writer.uint32(10).fork()).join();
     }
     return writer;
   },
 
-  decode(input: BinaryReader | Uint8Array, length?: number): ListCompetitionsResponse {
+  decode(input: BinaryReader | Uint8Array, length?: number): ListContestsResponse {
     const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseListCompetitionsResponse();
+    const message = createBaseListContestsResponse();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -735,7 +735,7 @@ export const ListCompetitionsResponse: MessageFns<ListCompetitionsResponse> = {
             break;
           }
 
-          message.competitions.push(CompetitionResponse.decode(reader, reader.uint32()));
+          message.contests.push(ContestResponse.decode(reader, reader.uint32()));
           continue;
         }
       }
@@ -747,28 +747,28 @@ export const ListCompetitionsResponse: MessageFns<ListCompetitionsResponse> = {
     return message;
   },
 
-  fromJSON(object: any): ListCompetitionsResponse {
+  fromJSON(object: any): ListContestsResponse {
     return {
-      competitions: globalThis.Array.isArray(object?.competitions)
-        ? object.competitions.map((e: any) => CompetitionResponse.fromJSON(e))
+      contests: globalThis.Array.isArray(object?.contests)
+        ? object.contests.map((e: any) => ContestResponse.fromJSON(e))
         : [],
     };
   },
 
-  toJSON(message: ListCompetitionsResponse): unknown {
+  toJSON(message: ListContestsResponse): unknown {
     const obj: any = {};
-    if (message.competitions?.length) {
-      obj.competitions = message.competitions.map((e) => CompetitionResponse.toJSON(e));
+    if (message.contests?.length) {
+      obj.contests = message.contests.map((e) => ContestResponse.toJSON(e));
     }
     return obj;
   },
 
-  create<I extends Exact<DeepPartial<ListCompetitionsResponse>, I>>(base?: I): ListCompetitionsResponse {
-    return ListCompetitionsResponse.fromPartial(base ?? ({} as any));
+  create<I extends Exact<DeepPartial<ListContestsResponse>, I>>(base?: I): ListContestsResponse {
+    return ListContestsResponse.fromPartial(base ?? ({} as any));
   },
-  fromPartial<I extends Exact<DeepPartial<ListCompetitionsResponse>, I>>(object: I): ListCompetitionsResponse {
-    const message = createBaseListCompetitionsResponse();
-    message.competitions = object.competitions?.map((e) => CompetitionResponse.fromPartial(e)) || [];
+  fromPartial<I extends Exact<DeepPartial<ListContestsResponse>, I>>(object: I): ListContestsResponse {
+    const message = createBaseListContestsResponse();
+    message.contests = object.contests?.map((e) => ContestResponse.fromPartial(e)) || [];
     return message;
   },
 };

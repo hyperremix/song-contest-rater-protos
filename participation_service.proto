@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package songcontestrater;
+
+import "participation.proto";
+import "google/protobuf/empty.proto";
+
+option go_package = ".;songcontestraterprotos";
+
+service Participation {
+  rpc ListParticipations(google.protobuf.Empty)
+      returns (ListParticipationsResponse) {}
+  rpc CreateParticipation(CreateParticipationRequest)
+      returns (ParticipationResponse) {}
+  rpc DeleteParticipation(DeleteParticipationRequest)
+      returns (ParticipationResponse) {}
+}

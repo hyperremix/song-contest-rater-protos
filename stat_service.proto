@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package songcontestrater;
+
+import "stat.proto";
+import "google/protobuf/empty.proto";
+
+option go_package = ".;songcontestraterprotos";
+
+service Stat {
+  rpc ListUserStats(google.protobuf.Empty) returns (ListUserStatsResponse) {}
+  rpc GetMyStats(google.protobuf.Empty) returns (UserStatsResponse) {}
+  rpc GetGlobalStats(google.protobuf.Empty) returns (GlobalStatsResponse) {}
+}

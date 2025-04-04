@@ -19,3 +19,8 @@ message CreateParticipationRequest {
   string act_id = 2;
   int32 order = 3;
 }
+
+message DeleteParticipationRequest {
+  string competition_id = 1;
+  string act_id = 2;
+}

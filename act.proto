@@ -7,8 +7,6 @@ import "rating.proto";
 
 option go_package = ".;songcontestraterprotos";
 
-message ListCompetitionActsRequest { string competition_id = 1; }
-
 message GetActRequest { string id = 1; }
 
 message CreateActRequest {
