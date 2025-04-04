@@ -6,6 +6,8 @@
 
 /* eslint-disable */
 import { BinaryReader } from "@bufbuild/protobuf/wire";
+import { Observable } from "rxjs";
+import { map } from "rxjs/operators";
 import { Empty } from "./google/protobuf/empty";
 import {
   CreateRatingRequest,
@@ -26,6 +28,7 @@ export interface Rating {
   CreateRating(request: CreateRatingRequest): Promise<RatingResponse>;
   UpdateRating(request: UpdateRatingRequest): Promise<RatingResponse>;
   DeleteRating(request: DeleteRatingRequest): Promise<RatingResponse>;
+  StreamRatings(request: Empty): Observable<RatingResponse>;
 }
 
 export const RatingServiceName = "songcontestrater.Rating";
@@ -41,6 +44,7 @@ export class RatingClientImpl implements Rating {
     this.CreateRating = this.CreateRating.bind(this);
     this.UpdateRating = this.UpdateRating.bind(this);
     this.DeleteRating = this.DeleteRating.bind(this);
+    this.StreamRatings = this.StreamRatings.bind(this);
   }
   ListRatings(request: Empty): Promise<ListRatingsResponse> {
     const data = Empty.encode(request).finish();
@@ -77,8 +81,17 @@ export class RatingClientImpl implements Rating {
     const promise = this.rpc.request(this.service, "DeleteRating", data);
     return promise.then((data) => RatingResponse.decode(new BinaryReader(data)));
   }
+
+  StreamRatings(request: Empty): Observable<RatingResponse> {
+    const data = Empty.encode(request).finish();
+    const result = this.rpc.serverStreamingRequest(this.service, "StreamRatings", data);
+    return result.pipe(map((data) => RatingResponse.decode(new BinaryReader(data))));
+  }
 }
 
 interface Rpc {
   request(service: string, method: string, data: Uint8Array): Promise<Uint8Array>;
+  clientStreamingRequest(service: string, method: string, data: Observable<Uint8Array>): Promise<Uint8Array>;
+  serverStreamingRequest(service: string, method: string, data: Uint8Array): Observable<Uint8Array>;
+  bidirectionalStreamingRequest(service: string, method: string, data: Observable<Uint8Array>): Observable<Uint8Array>;
 }

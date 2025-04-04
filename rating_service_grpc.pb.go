@@ -26,6 +26,7 @@ const (
 	Rating_CreateRating_FullMethodName    = "/songcontestrater.Rating/CreateRating"
 	Rating_UpdateRating_FullMethodName    = "/songcontestrater.Rating/UpdateRating"
 	Rating_DeleteRating_FullMethodName    = "/songcontestrater.Rating/DeleteRating"
+	Rating_StreamRatings_FullMethodName   = "/songcontestrater.Rating/StreamRatings"
 )
 
 // RatingClient is the client API for Rating service.
@@ -38,6 +39,7 @@ type RatingClient interface {
 	CreateRating(ctx context.Context, in *CreateRatingRequest, opts ...grpc.CallOption) (*RatingResponse, error)
 	UpdateRating(ctx context.Context, in *UpdateRatingRequest, opts ...grpc.CallOption) (*RatingResponse, error)
 	DeleteRating(ctx context.Context, in *DeleteRatingRequest, opts ...grpc.CallOption) (*RatingResponse, error)
+	StreamRatings(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (grpc.ServerStreamingClient[RatingResponse], error)
 }
 
 type ratingClient struct {
@@ -108,6 +110,25 @@ func (c *ratingClient) DeleteRating(ctx context.Context, in *DeleteRatingRequest
 	return out, nil
 }
 
+func (c *ratingClient) StreamRatings(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (grpc.ServerStreamingClient[RatingResponse], error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	stream, err := c.cc.NewStream(ctx, &Rating_ServiceDesc.Streams[0], Rating_StreamRatings_FullMethodName, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &grpc.GenericClientStream[emptypb.Empty, RatingResponse]{ClientStream: stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+// This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
+type Rating_StreamRatingsClient = grpc.ServerStreamingClient[RatingResponse]
+
 // RatingServer is the server API for Rating service.
 // All implementations must embed UnimplementedRatingServer
 // for forward compatibility.
@@ -118,6 +139,7 @@ type RatingServer interface {
 	CreateRating(context.Context, *CreateRatingRequest) (*RatingResponse, error)
 	UpdateRating(context.Context, *UpdateRatingRequest) (*RatingResponse, error)
 	DeleteRating(context.Context, *DeleteRatingRequest) (*RatingResponse, error)
+	StreamRatings(*emptypb.Empty, grpc.ServerStreamingServer[RatingResponse]) error
 	mustEmbedUnimplementedRatingServer()
 }
 
@@ -145,6 +167,9 @@ func (UnimplementedRatingServer) UpdateRating(context.Context, *UpdateRatingRequ
 }
 func (UnimplementedRatingServer) DeleteRating(context.Context, *DeleteRatingRequest) (*RatingResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteRating not implemented")
+}
+func (UnimplementedRatingServer) StreamRatings(*emptypb.Empty, grpc.ServerStreamingServer[RatingResponse]) error {
+	return status.Errorf(codes.Unimplemented, "method StreamRatings not implemented")
 }
 func (UnimplementedRatingServer) mustEmbedUnimplementedRatingServer() {}
 func (UnimplementedRatingServer) testEmbeddedByValue()                {}
@@ -275,6 +300,17 @@ func _Rating_DeleteRating_Handler(srv interface{}, ctx context.Context, dec func
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Rating_StreamRatings_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(emptypb.Empty)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(RatingServer).StreamRatings(m, &grpc.GenericServerStream[emptypb.Empty, RatingResponse]{ServerStream: stream})
+}
+
+// This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
+type Rating_StreamRatingsServer = grpc.ServerStreamingServer[RatingResponse]
+
 // Rating_ServiceDesc is the grpc.ServiceDesc for Rating service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -307,6 +343,12 @@ var Rating_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _Rating_DeleteRating_Handler,
 		},
 	},
-	Streams:  []grpc.StreamDesc{},
+	Streams: []grpc.StreamDesc{
+		{
+			StreamName:    "StreamRatings",
+			Handler:       _Rating_StreamRatings_Handler,
+			ServerStreams: true,
+		},
+	},
 	Metadata: "rating_service.proto",
 }

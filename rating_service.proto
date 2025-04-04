@@ -14,4 +14,5 @@ service Rating {
   rpc CreateRating(CreateRatingRequest) returns (RatingResponse) {}
   rpc UpdateRating(UpdateRatingRequest) returns (RatingResponse) {}
   rpc DeleteRating(DeleteRatingRequest) returns (RatingResponse) {}
+  rpc StreamRatings(google.protobuf.Empty) returns (stream RatingResponse) {}
 }
