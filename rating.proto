@@ -12,7 +12,7 @@ message ListUserRatingsRequest { string user_id = 1; }
 message GetRatingRequest { string id = 1; }
 
 message CreateRatingRequest {
-  string competition_id = 1;
+  string contest_id = 1;
   string act_id = 2;
   int32 song = 3;
   int32 singing = 4;
@@ -34,7 +34,7 @@ message DeleteRatingRequest { string id = 1; }
 
 message RatingResponse {
   string id = 1;
-  string competition_id = 2;
+  string contest_id = 2;
   string act_id = 3;
   int32 song = 4;
   int32 singing = 5;

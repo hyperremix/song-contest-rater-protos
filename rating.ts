@@ -20,7 +20,7 @@ export interface GetRatingRequest {
 }
 
 export interface CreateRatingRequest {
-  competition_id: string;
+  contest_id: string;
   act_id: string;
   song: number;
   singing: number;
@@ -44,7 +44,7 @@ export interface DeleteRatingRequest {
 
 export interface RatingResponse {
   id: string;
-  competition_id: string;
+  contest_id: string;
   act_id: string;
   song: number;
   singing: number;
@@ -178,13 +178,13 @@ export const GetRatingRequest: MessageFns<GetRatingRequest> = {
 };
 
 function createBaseCreateRatingRequest(): CreateRatingRequest {
-  return { competition_id: "", act_id: "", song: 0, singing: 0, show: 0, looks: 0, clothes: 0 };
+  return { contest_id: "", act_id: "", song: 0, singing: 0, show: 0, looks: 0, clothes: 0 };
 }
 
 export const CreateRatingRequest: MessageFns<CreateRatingRequest> = {
   encode(message: CreateRatingRequest, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (message.competition_id !== "") {
-      writer.uint32(10).string(message.competition_id);
+    if (message.contest_id !== "") {
+      writer.uint32(10).string(message.contest_id);
     }
     if (message.act_id !== "") {
       writer.uint32(18).string(message.act_id);
@@ -219,7 +219,7 @@ export const CreateRatingRequest: MessageFns<CreateRatingRequest> = {
             break;
           }
 
-          message.competition_id = reader.string();
+          message.contest_id = reader.string();
           continue;
         }
         case 2: {
@@ -281,7 +281,7 @@ export const CreateRatingRequest: MessageFns<CreateRatingRequest> = {
 
   fromJSON(object: any): CreateRatingRequest {
     return {
-      competition_id: isSet(object.competition_id) ? globalThis.String(object.competition_id) : "",
+      contest_id: isSet(object.contest_id) ? globalThis.String(object.contest_id) : "",
       act_id: isSet(object.act_id) ? globalThis.String(object.act_id) : "",
       song: isSet(object.song) ? globalThis.Number(object.song) : 0,
       singing: isSet(object.singing) ? globalThis.Number(object.singing) : 0,
@@ -293,8 +293,8 @@ export const CreateRatingRequest: MessageFns<CreateRatingRequest> = {
 
   toJSON(message: CreateRatingRequest): unknown {
     const obj: any = {};
-    if (message.competition_id !== "") {
-      obj.competition_id = message.competition_id;
+    if (message.contest_id !== "") {
+      obj.contest_id = message.contest_id;
     }
     if (message.act_id !== "") {
       obj.act_id = message.act_id;
@@ -322,7 +322,7 @@ export const CreateRatingRequest: MessageFns<CreateRatingRequest> = {
   },
   fromPartial<I extends Exact<DeepPartial<CreateRatingRequest>, I>>(object: I): CreateRatingRequest {
     const message = createBaseCreateRatingRequest();
-    message.competition_id = object.competition_id ?? "";
+    message.contest_id = object.contest_id ?? "";
     message.act_id = object.act_id ?? "";
     message.song = object.song ?? 0;
     message.singing = object.singing ?? 0;
@@ -534,7 +534,7 @@ export const DeleteRatingRequest: MessageFns<DeleteRatingRequest> = {
 function createBaseRatingResponse(): RatingResponse {
   return {
     id: "",
-    competition_id: "",
+    contest_id: "",
     act_id: "",
     song: 0,
     singing: 0,
@@ -553,8 +553,8 @@ export const RatingResponse: MessageFns<RatingResponse> = {
     if (message.id !== "") {
       writer.uint32(10).string(message.id);
     }
-    if (message.competition_id !== "") {
-      writer.uint32(18).string(message.competition_id);
+    if (message.contest_id !== "") {
+      writer.uint32(18).string(message.contest_id);
     }
     if (message.act_id !== "") {
       writer.uint32(26).string(message.act_id);
@@ -609,7 +609,7 @@ export const RatingResponse: MessageFns<RatingResponse> = {
             break;
           }
 
-          message.competition_id = reader.string();
+          message.contest_id = reader.string();
           continue;
         }
         case 3: {
@@ -704,7 +704,7 @@ export const RatingResponse: MessageFns<RatingResponse> = {
   fromJSON(object: any): RatingResponse {
     return {
       id: isSet(object.id) ? globalThis.String(object.id) : "",
-      competition_id: isSet(object.competition_id) ? globalThis.String(object.competition_id) : "",
+      contest_id: isSet(object.contest_id) ? globalThis.String(object.contest_id) : "",
       act_id: isSet(object.act_id) ? globalThis.String(object.act_id) : "",
       song: isSet(object.song) ? globalThis.Number(object.song) : 0,
       singing: isSet(object.singing) ? globalThis.Number(object.singing) : 0,
@@ -723,8 +723,8 @@ export const RatingResponse: MessageFns<RatingResponse> = {
     if (message.id !== "") {
       obj.id = message.id;
     }
-    if (message.competition_id !== "") {
-      obj.competition_id = message.competition_id;
+    if (message.contest_id !== "") {
+      obj.contest_id = message.contest_id;
     }
     if (message.act_id !== "") {
       obj.act_id = message.act_id;
@@ -765,7 +765,7 @@ export const RatingResponse: MessageFns<RatingResponse> = {
   fromPartial<I extends Exact<DeepPartial<RatingResponse>, I>>(object: I): RatingResponse {
     const message = createBaseRatingResponse();
     message.id = object.id ?? "";
-    message.competition_id = object.competition_id ?? "";
+    message.contest_id = object.contest_id ?? "";
     message.act_id = object.act_id ?? "";
     message.song = object.song ?? 0;
     message.singing = object.singing ?? 0;
