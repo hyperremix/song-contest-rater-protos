@@ -7,13 +7,13 @@ export {
   UpdateActRequest,
 } from "./act";
 export {
-  CompetitionResponse,
-  CreateCompetitionRequest,
-  DeleteCompetitionRequest,
-  GetCompetitionRequest,
-  ListCompetitionsResponse,
-  UpdateCompetitionRequest,
-} from "./competition";
+  ContestResponse,
+  CreateContestRequest,
+  DeleteContestRequest,
+  GetContestRequest,
+  ListContestsResponse,
+  UpdateContestRequest,
+} from "./contest";
 export {
   CreateParticipationRequest,
   ListParticipationsResponse,
