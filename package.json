@@ -19,7 +19,7 @@
     "version:minor": "pnpm version --new-version minor && git push --follow-tags",
     "version:patch": "pnpm version --new-version patch && git push --follow-tags",
     "ts-proto:generate": "protoc -I=. --plugin=./node_modules/.bin/protoc-gen-ts_proto --ts_proto_opt=esModuleInterop=true --ts_proto_opt=useDate=false --ts_proto_opt=snakeToCamel=false --ts_proto_opt=unrecognizedEnum=false --ts_proto_opt=useNumericEnumForJson=true --ts_proto_out=. ./*.proto",
-    "prepare": "husky && pnpm ts-proto:generate"
+    "prepare": "husky"
   },
   "dependencies": {
     "@bufbuild/protobuf": "^2.2.5",

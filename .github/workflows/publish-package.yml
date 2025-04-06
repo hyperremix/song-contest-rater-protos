@@ -16,9 +16,6 @@ jobs:
           node-version: 22
           registry-url: https://npm.pkg.github.com/
           cache: pnpm
-      - uses: arduino/setup-protoc@v3
-        with:
-          version: "29.3"
       - run: pnpm install
       - run: pnpm lint
       - run: pnpm build
