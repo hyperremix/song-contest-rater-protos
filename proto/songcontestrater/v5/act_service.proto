@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package songcontestrater.v5;
+
+import "songcontestrater/v5/act.proto";
+
+option go_package = "github.com/hyperremix/song-contest-rater-protos/v5;songcontestrater";
+
+service ActService {
+  rpc ListActs(ListActsRequest) returns (ListActsResponse) {}
+  rpc GetAct(GetActRequest) returns (GetActResponse) {}
+  rpc CreateAct(CreateActRequest) returns (CreateActResponse) {}
+  rpc UpdateAct(UpdateActRequest) returns (UpdateActResponse) {}
+  rpc DeleteAct(DeleteActRequest) returns (DeleteActResponse) {}
+}

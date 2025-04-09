@@ -1,0 +1,64 @@
+syntax = "proto3";
+
+package songcontestrater.v5;
+
+import "google/protobuf/timestamp.proto";
+import "songcontestrater/v5/act.proto";
+
+option go_package = "github.com/hyperremix/song-contest-rater-protos/v5;songcontestrater";
+
+enum Heat {
+  HEAT_UNSPECIFIED = 0;
+  HEAT_SEMI_FINAL = 1;
+  HEAT_FINAL = 2;
+  HEAT_1 = 3;
+  HEAT_2 = 4;
+  HEAT_3 = 5;
+  HEAT_4 = 6;
+  HEAT_5 = 7;
+  HEAT_FINAL_QUALIFIER = 8;
+}
+
+message Contest {
+  string id = 1;
+  Heat heat = 2;
+  string city = 3;
+  string country = 4;
+  google.protobuf.Timestamp start_time = 5;
+  string image_url = 6;
+  repeated Act acts = 7;
+  google.protobuf.Timestamp created_at = 8;
+  google.protobuf.Timestamp updated_at = 9;
+}
+
+message GetContestRequest { string id = 1; }
+
+message GetContestResponse { Contest contest = 1; }
+
+message CreateContestRequest {
+  Heat heat = 1;
+  string city = 2;
+  string country = 3;
+  google.protobuf.Timestamp start_time = 4;
+  string image_url = 5;
+}
+
+message CreateContestResponse { Contest contest = 1; }
+message UpdateContestRequest {
+  string id = 1;
+  Heat heat = 2;
+  string city = 3;
+  string country = 4;
+  google.protobuf.Timestamp start_time = 5;
+  string image_url = 6;
+}
+
+message UpdateContestResponse { Contest contest = 1; }
+
+message DeleteContestRequest { string id = 1; }
+
+message DeleteContestResponse { Contest contest = 1; }
+
+message ListContestsRequest {}
+
+message ListContestsResponse { repeated Contest contests = 1; }

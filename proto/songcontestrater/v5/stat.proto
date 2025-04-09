@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+package songcontestrater.v5;
+
+import "google/protobuf/timestamp.proto";
+import "songcontestrater/v5/user.proto";
+
+option go_package = "github.com/hyperremix/song-contest-rater-protos/v5;songcontestrater";
+
+enum CriticType {
+  CRITIC_TYPE_UNSPECIFIED = 0;
+  CRITIC_TYPE_HARSH = 1;
+  CRITIC_TYPE_SLIGHTLY_CRITICAL = 2;
+  CRITIC_TYPE_BALANCED = 3;
+  CRITIC_TYPE_EASY_TO_PLEASE = 4;
+  CRITIC_TYPE_GENEROUS = 5;
+}
+
+message UserStats {
+  double user_rating_avg = 1;
+  int32 total_ratings = 2;
+  double rating_bias = 3;
+  CriticType critic_type = 4;
+  User user = 5;
+  google.protobuf.Timestamp created_at = 6;
+  google.protobuf.Timestamp updated_at = 7;
+}
+
+message ListUserStatsRequest {}
+
+message ListUserStatsResponse { repeated UserStats stats = 1; }
+
+message GlobalStats {
+  double global_rating_avg = 1;
+  int32 total_ratings = 2;
+  google.protobuf.Timestamp created_at = 3;
+  google.protobuf.Timestamp updated_at = 4;
+}
+
+message GetGlobalStatsRequest {}
+
+message GetGlobalStatsResponse { GlobalStats stats = 1; }
+
+message GetMyStatsRequest {}
+
+message GetMyStatsResponse { UserStats stats = 1; }

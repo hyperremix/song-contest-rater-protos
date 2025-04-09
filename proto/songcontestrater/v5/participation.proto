@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package songcontestrater.v5;
+
+option go_package = "github.com/hyperremix/song-contest-rater-protos/v5;songcontestrater";
+
+message Participation {
+  string contest_id = 1;
+  string act_id = 2;
+  int32 order = 3;
+}
+message ListParticipationsRequest {}
+
+message ListParticipationsResponse {
+  repeated Participation participations = 1;
+}
+
+message CreateParticipationRequest {
+  string contest_id = 1;
+  string act_id = 2;
+  int32 order = 3;
+}
+
+message CreateParticipationResponse { Participation participation = 1; }
+
+message DeleteParticipationRequest {
+  string contest_id = 1;
+  string act_id = 2;
+}
+
+message DeleteParticipationResponse { Participation participation = 1; }

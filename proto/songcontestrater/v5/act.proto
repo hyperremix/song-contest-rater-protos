@@ -1,0 +1,48 @@
+syntax = "proto3";
+
+package songcontestrater.v5;
+
+import "google/protobuf/timestamp.proto";
+import "songcontestrater/v5/rating.proto";
+
+option go_package = "github.com/hyperremix/song-contest-rater-protos/v5;songcontestrater";
+
+message Act {
+  string id = 1;
+  string artist_name = 2;
+  string song_name = 3;
+  string image_url = 4;
+  int32 order = 5;
+  repeated Rating ratings = 6;
+  google.protobuf.Timestamp created_at = 7;
+  google.protobuf.Timestamp updated_at = 8;
+}
+
+message GetActRequest { string id = 1; }
+
+message GetActResponse { Act act = 1; }
+
+message CreateActRequest {
+  string artist_name = 1;
+  string song_name = 2;
+  string image_url = 3;
+}
+
+message CreateActResponse { Act act = 1; }
+
+message UpdateActRequest {
+  string id = 1;
+  string artist_name = 2;
+  string song_name = 3;
+  string image_url = 4;
+}
+
+message UpdateActResponse { Act act = 1; }
+
+message DeleteActRequest { string id = 1; }
+
+message DeleteActResponse { Act act = 1; }
+
+message ListActsRequest {}
+
+message ListActsResponse { repeated Act acts = 1; }

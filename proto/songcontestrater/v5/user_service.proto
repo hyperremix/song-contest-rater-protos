@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package songcontestrater.v5;
+
+import "songcontestrater/v5/user.proto";
+
+option go_package = "github.com/hyperremix/song-contest-rater-protos/v5;songcontestrater";
+
+service UserService {
+  rpc ListUsers(ListUsersRequest) returns (ListUsersResponse) {}
+  rpc GetUser(GetUserRequest) returns (GetUserResponse) {}
+  rpc CreateUser(CreateUserRequest) returns (CreateUserResponse) {}
+  rpc UpdateUser(UpdateUserRequest) returns (UpdateUserResponse) {}
+  rpc DeleteUser(DeleteUserRequest) returns (DeleteUserResponse) {}
+}

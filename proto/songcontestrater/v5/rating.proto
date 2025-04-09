@@ -1,0 +1,66 @@
+syntax = "proto3";
+
+package songcontestrater.v5;
+
+import "google/protobuf/timestamp.proto";
+import "songcontestrater/v5/user.proto";
+
+option go_package = "github.com/hyperremix/song-contest-rater-protos/v5;songcontestrater";
+
+message Rating {
+  string id = 1;
+  string contest_id = 2;
+  string act_id = 3;
+  int32 song = 4;
+  int32 singing = 5;
+  int32 show = 6;
+  int32 looks = 7;
+  int32 clothes = 8;
+  int32 total = 9;
+  User user = 10;
+  google.protobuf.Timestamp created_at = 11;
+  google.protobuf.Timestamp updated_at = 12;
+}
+
+message ListUserRatingsRequest { string user_id = 1; }
+
+message ListUserRatingsResponse { repeated Rating ratings = 1; }
+
+message GetRatingRequest { string id = 1; }
+
+message GetRatingResponse { Rating rating = 1; }
+
+message CreateRatingRequest {
+  string contest_id = 1;
+  string act_id = 2;
+  int32 song = 3;
+  int32 singing = 4;
+  int32 show = 5;
+  int32 looks = 6;
+  int32 clothes = 7;
+}
+
+message CreateRatingResponse { Rating rating = 1; }
+
+message UpdateRatingRequest {
+  string id = 1;
+  int32 song = 2;
+  int32 singing = 3;
+  int32 show = 4;
+  int32 looks = 5;
+  int32 clothes = 6;
+}
+
+message UpdateRatingResponse { Rating rating = 1; }
+
+message DeleteRatingRequest { string id = 1; }
+
+message DeleteRatingResponse { Rating rating = 1; }
+
+message ListRatingsRequest {}
+
+message ListRatingsResponse { repeated Rating ratings = 1; }
+
+message StreamRatingsRequest {}
+
+message StreamRatingsResponse { Rating rating = 1; }

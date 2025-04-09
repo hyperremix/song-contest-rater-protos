@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package songcontestrater.v5;
+
+import "songcontestrater/v5/stat.proto";
+
+option go_package = "github.com/hyperremix/song-contest-rater-protos/v5;songcontestrater";
+
+service StatService {
+  rpc ListUserStats(ListUserStatsRequest) returns (ListUserStatsResponse) {}
+  rpc GetMyStats(GetMyStatsRequest) returns (GetMyStatsResponse) {}
+  rpc GetGlobalStats(GetGlobalStatsRequest) returns (GetGlobalStatsResponse) {}
+}
