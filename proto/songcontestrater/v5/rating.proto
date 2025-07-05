@@ -61,6 +61,16 @@ message ListRatingsRequest {}
 
 message ListRatingsResponse { repeated Rating ratings = 1; }
 
+enum EventType {
+  EVENT_TYPE_UNSPECIFIED = 0;
+  EVENT_TYPE_CREATED = 1;
+  EVENT_TYPE_UPDATED = 2;
+  EVENT_TYPE_DELETED = 3;
+}
+
 message StreamRatingsRequest {}
 
-message StreamRatingsResponse { Rating rating = 1; }
+message StreamRatingsResponse {
+  EventType event_type = 1;
+  Rating rating = 2;
+}
